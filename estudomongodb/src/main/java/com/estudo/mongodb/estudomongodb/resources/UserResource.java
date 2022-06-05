@@ -1,9 +1,8 @@
 package com.estudo.mongodb.estudomongodb.resources;
 
-import java.awt.print.Pageable;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +17,7 @@ import com.estudo.mongodb.estudomongodb.services.UserService;
 @RestController
 @RequestMapping(value = "/users")
 public class UserResource {
+	
 	@Autowired
 	private UserService userService;
 
@@ -29,7 +29,8 @@ public class UserResource {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> findByid(@PathVariable(value = "id") String id){
-		return userService.findById(id)
+		
+		return ResponseEntity.ok().body(userService.findById(id));
 	}
 
 }
