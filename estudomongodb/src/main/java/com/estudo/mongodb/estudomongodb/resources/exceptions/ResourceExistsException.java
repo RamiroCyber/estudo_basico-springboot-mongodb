@@ -14,7 +14,7 @@ import com.estudo.mongodb.estudomongodb.services.exceptions.ObjectNotFoundExcept
 public class ResourceExistsException {
 
 	@ExceptionHandler(ObjectExistsException.class)
-	public ResponseEntity<StandardError> objectExists(ObjectNotFoundException object, HttpServletRequest request) {
+	public ResponseEntity<StandardError> objectExists(ObjectExistsException object, HttpServletRequest request) {
 
 		var status = HttpStatus.BAD_REQUEST;
 		var error = new StandardError(System.currentTimeMillis(), status.value(), "Object exists", object.getMessage(),
