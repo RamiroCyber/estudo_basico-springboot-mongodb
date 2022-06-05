@@ -1,9 +1,9 @@
 package com.estudo.mongodb.estudomongodb.services.exceptions;
 
-public class ObjectNotFoundException extends RuntimeException {
+public class ObjectExistsException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 
-	public ObjectNotFoundException(String msg) {
+	public ObjectExistsException(String msg) {
 		super(msg);
 	}
 
