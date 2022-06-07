@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.estudo.mongodb.estudomongodb.services.exceptions.ObjectExistsException;
-import com.estudo.mongodb.estudomongodb.services.exceptions.ObjectNotFoundException;
 
 @ControllerAdvice
 public class ResourceExistsException {

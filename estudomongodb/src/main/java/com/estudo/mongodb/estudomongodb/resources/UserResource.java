@@ -8,6 +8,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,7 +35,6 @@ public class UserResource {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> findByid(@PathVariable(value = "id") String id) {
-
 		return ResponseEntity.ok().body(userService.findById(id));
 	}
 
@@ -43,6 +43,12 @@ public class UserResource {
 		var user = new User();
 		BeanUtils.copyProperties(userDTO, user);
 		return ResponseEntity.status(HttpStatus.CREATED).body(userService.saveUser(user));
+	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> deleteUser(@PathVariable(value = "id") String id) {
+		userService.deleteUser(id);
+		return ResponseEntity.noContent().build();
 	}
 
 }
