@@ -65,4 +65,11 @@ public class UserResource {
 		return ResponseEntity.ok().body(userService.saveUser(updatedUser));
 	}
 
+	@GetMapping("/{id}/posts")
+	public ResponseEntity<Object> findPosts(@PathVariable(value = "id") String id) {
+		Optional<User> userOptional = userService.findById(id);
+		var user = userOptional.get();
+		return ResponseEntity.ok().body(user.getPosts());
+	}
+
 }
