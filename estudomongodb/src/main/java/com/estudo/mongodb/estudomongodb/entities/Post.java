@@ -1,13 +1,16 @@
 package com.estudo.mongodb.estudomongodb.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.estudo.mongodb.estudomongodb.dto.AuthorDTO;
+import com.estudo.mongodb.estudomongodb.dto.CommentDTO;
 
 @Document(collection = "POSTS")
 public class Post implements Serializable {
@@ -20,13 +23,15 @@ public class Post implements Serializable {
 	private String body;
 	private AuthorDTO author;
 
+	private List<CommentDTO> comments = new ArrayList<>();
+
 	public Post() {
 	}
 
-	public Post(String id, Date date, String title, String body, AuthorDTO author) {
+	public Post(String id, String title, String body, AuthorDTO author) {
 		super();
 		this.id = id;
-		this.date = date;
+		this.date = new Date();
 		this.title = title;
 		this.body = body;
 		this.author = author;
@@ -66,6 +71,10 @@ public class Post implements Serializable {
 
 	public void setAuthor(AuthorDTO author) {
 		this.author = author;
+	}
+
+	public List<CommentDTO> getComments() {
+		return comments;
 	}
 
 	@Override
