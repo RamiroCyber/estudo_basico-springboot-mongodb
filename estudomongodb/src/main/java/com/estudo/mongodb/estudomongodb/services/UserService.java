@@ -44,9 +44,4 @@ public class UserService {
 		userRepository.deleteById(id);
 	}
 	
-	public User update(String id, User user) {
-		User newUser = userRepository.findById(id);
-		
-		
-	}
 }
