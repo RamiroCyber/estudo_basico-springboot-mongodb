@@ -33,7 +33,7 @@ public class UserService {
 	@Transactional
 	public User saveUser(User user) {
 		if (userRepository.existsByEmail(user.getEmail())) {
-			throw new ObjectExistsException("User no save"); // TESTE
+			throw new ObjectExistsException("User not save"); // TESTE
 		}
 		return userRepository.save(user);
 	}
@@ -42,5 +42,11 @@ public class UserService {
 	public void deleteUser(String id) {
 		findById(id);
 		userRepository.deleteById(id);
+	}
+	
+	public User update(String id, User user) {
+		User newUser = userRepository.findById(id);
+		
+		
 	}
 }

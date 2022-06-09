@@ -1,5 +1,7 @@
 package com.estudo.mongodb.estudomongodb.resources;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -39,7 +41,7 @@ public class UserResource {
 	}
 
 	@PostMapping
-	public ResponseEntity<Object> insertUser(@RequestBody UserDTO userDTO) {
+	public ResponseEntity<Object> insertUser(@RequestBody @Valid UserDTO userDTO) {
 		var user = new User();
 		BeanUtils.copyProperties(userDTO, user);
 		return ResponseEntity.status(HttpStatus.CREATED).body(userService.saveUser(user));
